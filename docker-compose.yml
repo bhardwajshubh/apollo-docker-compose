@@ -1,0 +1,30 @@
+version : "3.8"
+
+services:
+  node-app:
+    image: docker-apollo-graphql:1.0.0
+    ports:
+      - 3000:3000
+    volumes:
+      - ../node-app:/opt/hello-world-app
+    depends_on:
+      - mydb
+    networks:
+      - backend
+  
+  mydb:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demo
+    volumes:
+      - ./docker-demo-volume:/var/lib/mysql
+    networks:
+      - backend
+
+networks:
+  backend:
+    name: docker-demo-network
+    driver: bridge
+
+
