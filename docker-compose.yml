@@ -2,7 +2,7 @@ version : "3.8"
 
 services:
   node-app:
-    image: docker-apollo-graphql:1.0.0
+    image: apollo-gql-handson:1.0.0
     ports:
       - 3000:3000
     volumes:
